@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Table</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<script>
+  function displayDateTime() {
+      var dateElement = document.getElementById("date");
+      var timeElement = document.getElementById("time");
+
+      var options = { year: 'numeric', month: 'long', day: 'numeric' };
+      var date = new Date().toLocaleDateString(undefined, options);
+      dateElement.innerHTML = date;
+
+      var time = new Date().toLocaleTimeString();
+      timeElement.innerHTML = time;
+    }
+
+    // Call the function to display the date and time every second
+    setInterval(displayDateTime, 1000);
+</script>
+<style>
+  #date {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #fff;
+      font-size: 18px;
+    }
+
+    #time {
+      position: absolute;
+      top: 10px;
+      right: 140px;
+      color: #fff;
+      font-size: 18px;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      
+      background-color: lavender;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+        background-color: #333;
+        color: #4dc02b;
+        padding: 50px;
+        text-align: center;
+        display: block;
+      }
+    h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+    nav {
+     
+      background-color: #4c4848;
+      color: #fff;
+      padding: 10px;
+      min-width: 600px;
+      
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    li {
+      float: left;
+  }
+  li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-family: 'poppins',sans-serif;
+        font-size:18px;
+        letter-spacing: 0.5px;
+
+      }
+      a:hover:after{
+        width: 10%;
+      }
+       a:hover {
+        background-color:gray;
+        border-radius: 5px;
+      }
+    li a:hover {
+      background-color: #111;
+    }
+    button {
+      background-color: cadetblue;
+      color: #fff;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 10px;
+    }
+    button a{
+      color: white;
+    }
+   
+    section {
+     
+      padding: 20px;
+      margin: 20px;
+    }
+    .r1{
+      font-size: 30px;
+      background-color: rgb(112, 173, 70);
+    }
+    .r2{
+      font-size: 30px;
+      background-color: rgb(112, 173, 70);
+    }
+    th,td,table{
+      border-collapse: collapse;
+      text-align: center;
+      padding: 10px;
+    }
+    th{
+      background-color: rgb(255, 216, 102);
+    }
+    a{
+      text-decoration: none;
+    }
+   td a:visited{
+      color: red;
+    }
+    .link:hover,
+    .active {
+      background-color: #111;
+      border-bottom: 2px solid #fff;
+      border-radius: 5px;
+    }
+    .logout {
+      position: relative;
+      padding-right: 30px;
+      float: right;
+    }
+
+    .logout .icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+    }
+
+  </style>
+<body>
+    <header>
+      <img src="logo.png" width="100" height="100">
+        <h1>REPO HUB</h1>
+      </header>
+      <nav>
+          <ul>
+            <ul>
+              <li><a href="home.html" ><i class="fas fa-home"></i> Home</a></li>
+              <li><a href="course.html" ><i class="fas fa-book"></i> Courses</a></li>
+              <li><a href="timetable.html" class="link active"><i class="far fa-calendar-alt"></i> Class Timetable</a></li>
+              <li><a href="question_papers.html"><i class="far fa-file-alt"></i> Question Papers</a></li>
+              <li><a href="todo.html"><i class="fas fa-tasks"></i> Works</a></li>
+
+              <li class="logout"><a href="login.html"><span class="icon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
+            </ul>
+          </ul>
+          </nav>
+          <section>
+            <h2 style="text-align: center;"> CLASS TIMETABLE</h2>
+            <table width="100%" border="1" >
+              <div>
+                  <tr>
+                    <th class="r1" colspan="12">CLASS ROOM ALLOCATION CHART <br>EVEN SEMESTER 2022-2023</th>
+                  </tr>
+                  <tr>
+                    <th>Dept.CSE</th>
+                    <th>Semester:II</th>
+                    <th>Class:B-tech CSE</th>
+                    <th colspan="2">Section:E</th>
+                    <th colspan="2">Class Room NO:D 405 <br>(AB 3-Third Floor)</th>
+                    <th colspan="2">Class Advisors: <br>Dr.Vijay Kumar S <br>Dr.Remyakrishnan P</th>
+                    <th colspan="2">Mail ID: <br>s_vijaykumar1@cb.amrita.edu <br>p_remyakrishnan@cb.amrita.edu</th>
+                  </tr>
+                  <tr>
+                    <td rowspan="2";>Time/Day</td>
+                    <td>Slot1</td>
+                    <td>Slot2</td>
+                    <td rowspan="7" style="background-color: rgb(1, 176, 240);"></td>
+                    <td>Slot3</td>
+                    <td>Slot4</td>
+                    <td>5</td>
+                    <td style="background-color: rgb(1, 176, 240);"></td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                  </tr>
+                  <tr>
+                    <td>8.50am-9.40am</td>
+                    <td>9.40am-10.30am</td>
+                    <td>10.40am-11.30am</td>
+                    <td>11.30am-12.20am</td>
+                    <td>12.20pm-1.10pm</td>
+                    <td>1.10pm-1.40pm</td>
+                    <td>2.30pm-3.20pm</td>
+                    <td>3.20pm-4.10pm</td>
+                    <td>4.10pm-5.00pm</td>
+                  </tr>
+                  <tr>
+                    <td>Monday</td>
+                    <td><a href="19phy101.html" target="_blank">19PHY101</a></td>
+                    <td><a href="19cse111.html" target="_blank">19CSE111</a></td>
+                    <td><a href="19cse102.html" target="_blank">19CSE102</a></td>
+                    <td><a href="19mat112.html" target="_blank">19MAT112</a></td>
+                    <td><a href="19mat115.html" target="_blank">19MAT115</a></td>
+                    <td rowspan="4" style="background-color: rgb(90, 155, 213);"></td>
+                    <td colspan="3">19EEE182</td>
+                  </tr>
+                  <tr>
+                    <td>Tuesday</td>
+                    <td><a href="19cse111.html" target="_blank">19CSE111</a></td>
+                    <td><a href="19cse102.html" target="_blank">19CSE102</a></td>
+                    <td><a href="19mat115.html" target="_blank">19MAT115</a></td>
+                    <td><a href="19phy101.html" target="_blank">19PHY101</a></td>
+                    <td><a href="19eee111.html" target="_blank">19EEE111</a></td>
+                    <td colspan="2"><a href="19cse102.html" target="_blank">19CSE102</a></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Wednesday</td>
+                    <td colspan="2"><a href="19cse103.html" target="_blank">19CSE103</a></td>
+                    <td><a href="19cul.html" target="_blank">19CUL111</a></td>
+                    <td><a href="19cse103.html" target="_blank">19CSE103</a></td>
+                    <td><a href="19mat115.html" target="_blank">19MAT115</a></td>
+                    <td></td>
+                    <td>Mentoring Dr.Remyakrishnan P</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Thursday</td>
+                    <td><a href="19cse102.html" target="_blank">19CSE102</a></td>
+                    <td><a href="19mat112.html" target="_blank">19MAT112</a></td>
+                    <td><a href="19phy101.html" target="_blank">19PHY101</a></td>
+                    <td><a href="19eee111.html" target="_blank">19EEE111</a></td>
+                    <td><a href="19cul.html" target="_blank">19CUL111</a></td>
+                    <td><a href="19mat115.html" target="_blank">19MAT115</a></td>
+                    <td></td>
+                    <td>Mentoring Dr.Vijay Kumar S</td>
+                  </tr>
+                  <tr>
+                    <td>Friday</td>
+                    <td><a href="19mat112.html" target="_blank">19MAT112</a></td>
+                    <td><a href="19eee111.html" target="_blank">19EEE111</a></td>
+                    <td></td>
+                    <td colspan="3"><a href="19cse103.html" target="_blank">19MEE181</a></td>
+                    <td></td>
+                    <td><a href="19cse103.html" target="_blank">19CSE103</a></td>
+                    <td></td>
+                  </tr>
+              </div>
+            </table>
+          </section>
+          <p><center>
+            <button><a style="text-decoration: none;" href="time table.jpeg" target="_blank">Click here to download timetable</a></button> 
+         </p>
+       
+          <button onclick="window.print()">Print this page</button>
+          <div id="date"></div>
+  <div id="time"></div>
+        
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Home Page</title>
+  <style>
+    /* CSS styles for the rest of your page */
+
+    /* Calendar container */
+    #calendar {
+      max-width: 800px;
+      margin: 20px auto;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: lavender;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #4dc02b;
+      padding: 50px;
+      text-align: center;
+      display: block;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    nav {
+      background-color: #4c4848;
+      color: #fff;
+      padding: 10px;
+      min-width: 600px;
+    }
+
+    .link:hover,
+    .active {
+      background-color: #111;
+      border-bottom: 2px solid #fff;
+      border-radius: 5px;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-family: 'poppins', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+    }
+
+    a:hover:after {
+      width: 10%;
+    }
+
+    a:hover {
+      background-color: gray;
+      border-radius: 5px;
+    }
+
+    li a:hover {
+      background-color: #111;
+    }
+    span:hover {
+        background-color: #111;
+
+    }
+
+    section {
+      padding: 20px;
+      margin: 20px;
+    }
+
+    /* Additional Styles */
+    section h1 {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    section h2 {
+        background-color: beige;
+      padding: 10px;
+      border-radius: 10px;
+      transition: background-color 0.3s ease;
+      
+    }
+
+    section h2:hover {
+      background-color: #f5f5dc;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer h1 {
+      animation: text-glow 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes text-glow {
+      0% {
+        text-shadow: 0 0 500px rgba(253, 0, 0, 0.5);
+      }
+      100% {
+        text-shadow: 0 0 5px rgb(69, 249, 9);
+      }
+    }
+    
+    #calendar {
+        position:absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      width: 340px;
+      height: 100px;
+      padding-top: 100px;
+      border-color: #111;
+    }
+
+    /* Logout button */
+    .logout {
+      position: relative;
+      padding-right: 30px;
+      float: right;
+    }
+
+    .logout .icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+    }
+    #time {
+      position: absolute;
+      top: 10px;
+      right: 140px;
+      color: #fff;
+      font-size: 18px;
+    }
+    
+    #date {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #fff;
+      font-size: 18px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body>
+  <header>
+    <img src="logo.png" width="100" height="100">
+    <h1>REPO HUB</h1>
+  </header>
+
+  <nav>
+    <ul>
+    
+            <li><a href="home.html" class="link active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="course.html"  ><i class="fas fa-book"></i> Courses</a></li>
+            <li><a href="timetable.html" ><i class="far fa-calendar-alt"></i> Class Timetable</a></li>
+            <li><a href="question_papers.html"><i class="far fa-file-alt"></i> Question Papers</a></li>
+            <li><a href="todo.html"><i class="fas fa-tasks"></i> Works</a></li>
+        
+
+      <li class="logout"><a href="login.html"><span class="icon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <h1><center>Welcome!</center></h1>
+    <br>
+    <br>
+    <p><b><u>Upcoming IMPORTANT dates AND Events are</u></b></p>
+    <h3>9-07-2023 -- Maths test</h3>
+    <h3>6-07-2023 -- Physics test</h3>
+    <h3>7-07-2023 -- Last date EEE assignment submission</h3>
+    <h3>5-07-2023 -- project Evalution of UID</h3>
+    <h3>11-07-2023 -- C PROGRAMMING Lab Evolution - 3</h3>
+    <br>
+    <h2>From 13-07-2023 onwards Endsem exams will be started</h2>
+    
+    <div id="calendar"></div>
+  </section>
+
+  <footer>
+    <h1> <center>WORK SMART NOT HARD!</center> </h1>
+  </footer>
+  <div id="date"></div>
+  <div id="time"></div>
+
+  <script>
+    // JavaScript to display real-time date and time
+    function displayDateTime() {
+      var dateElement = document.getElementById("date");
+      var timeElement = document.getElementById("time");
+
+      var options = { year: 'numeric', month: 'long', day: 'numeric' };
+      var date = new Date().toLocaleDateString(undefined, options);
+      dateElement.innerHTML = date;
+
+      var time = new Date().toLocaleTimeString();
+      timeElement.innerHTML = time;
+    }
+
+    // Call the function to display the date and time every second
+    setInterval(displayDateTime, 1000);
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+  <script>
+    // Initialize the calendar
+    $(document).ready(function() {
+      $('#calendar').fullCalendar();
+    });
+  </script>
+</body>
+</html>

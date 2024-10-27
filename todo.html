@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <script>
+            document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("todoForm");
+  const input = document.getElementById("todoInput");
+  const todoList = document.getElementById("todoList");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const todoText = input.value.trim();
+    if (todoText !== "") {
+      const listItem = createListItem(todoText);
+      todoList.appendChild(listItem);
+      input.value = "";
+    }
+  });
+
+  todoList.addEventListener("click", function(e) {
+    if (e.target.classList.contains("delete")) {
+      const listItem = e.target.parentNode;
+      todoList.removeChild(listItem);
+    } else if (e.target.classList.contains("edit")) {
+      const listItem = e.target.parentNode;
+      const span = listItem.querySelector("span");
+      const input = document.createElement("input");
+      input.type = "text";
+      input.value = span.textContent;
+      listItem.replaceChild(input, span);
+      e.target.textContent = "Save";
+      e.target.classList.remove("edit");
+      e.target.classList.add("save");
+    } else if (e.target.classList.contains("save")) {
+      const listItem = e.target.parentNode;
+      const input = listItem.querySelector("input");
+      const span = document.createElement("span");
+      span.textContent = input.value;
+      listItem.replaceChild(span, input);
+      e.target.textContent = "Edit";
+      e.target.classList.remove("save");
+      e.target.classList.add("edit");
+    } else if (e.target.classList.contains("reset")) {
+      const listItem = e.target.parentNode;
+      const timer = listItem.querySelector(".timer");
+      timer.textContent = "Time: 0:00";
+    }
+  });
+
+  function createListItem(text) {
+    const listItem = document.createElement("li");
+    listItem.innerHTML = `
+      <span>${text}</span>
+      <button class="delete">Delete</button>
+      <button class="edit">Edit</button>
+      <button class="reset">Reset</button>
+      <span class="timer">Time: 0:00</span>
+    `;
+    startTimer(listItem.querySelector(".timer"));
+    return listItem;
+  }
+
+  function startTimer(timer) {
+    let time = 0;
+    const interval = setInterval(() => {
+      time++;
+      const minutes = Math.floor(time / 60);
+      const seconds = time % 60;
+      timer.textContent = `Time: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }, 1000);
+    timer.dataset.interval = interval;
+  }
+});
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+      background-color: lavender;
+      margin: 0;
+      padding: 0;
+}
+header {
+      background-color: #333;
+      color: #4dc02b;
+      padding: 50px;
+      text-align: center;
+      display: block;
+    }
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 0 5px rgba(237, 233, 233, 0.2);
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+      font-size: 36px;
+}
+
+nav {
+      background-color: #4c4848;
+      color: #fff;
+      padding: 10px;
+      min-width: 600px;
+    } 
+
+    .link:hover,
+    .active {
+      background-color: #111;
+      border-bottom: 2px solid #fff;
+      border-radius: 5px;
+    }
+
+form {
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: green;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(78, 148, 9);
+  color:lavenderblush;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+      padding: 0;
+      overflow: hidden;
+}
+
+li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  float: left;
+}
+
+li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-family: 'poppins', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+    }
+
+    a:hover:after {
+      width: 10%;
+    }
+
+    a:hover {
+      background-color: rgb(253, 248, 248);
+      border-radius: 5px;
+    }
+
+    li a:hover {
+      background-color: rgb(18, 16, 16);
+    }
+
+    section {
+      padding: 20px;
+      margin: 20px;
+    }
+
+    /* Additional Styles */
+    section h1 {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    section h2 {
+      background-color: rgb(23, 23, 20);
+      padding: 10px;
+      border-radius: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    section h2:hover {
+      background-color: #f5f5ee;
+    }
+
+    footer {
+      background-color: rgb(245, 242, 242);
+      color: #f4f0f0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer h1 {
+      animation: text-glow 2s ease-in-out infinite alternate;
+    }
+
+
+li span {
+  flex-grow: 1;
+}
+
+li button {
+  margin-left: 5px;
+  background-color: lightslategray;
+}
+#date {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #fff;
+      font-size: 18px;
+    }
+
+    #time {
+      position: absolute;
+      top: 10px;
+      right: 140px;
+      color: #fff;
+      font-size: 18px;
+    }
+    .logout {
+      position: relative;
+      padding-right: 30px;
+      float: right;
+    }
+
+    .logout .icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+    }
+    </style>
+
+    <title>To Do List</title>
+</head>
+
+<body>
+    <header>
+        <img src="logo.png" width="100" height="100">
+        <h1>REPO HUB</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="course.html"  ><i class="fas fa-book"></i> Courses</a></li>
+            <li><a href="timetable.html" ><i class="far fa-calendar-alt"></i> Class Timetable</a></li>
+            <li><a href="question_papers.html"><i class="far fa-file-alt"></i> Question Papers</a></li>
+            <li><a href="todo.html" class="link active"><i class="fas fa-tasks"></i> Works</a></li>
+
+            <li class="logout"><a href="login.html"><span class="icon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
+          </ul>
+    </nav>
+   
+        <div class="container">
+            <h1>Todo List</h1>
+            <br>
+            <form id="todoForm">
+              <input type="text" id="todoInput" placeholder="Add a new task">
+              <br>
+              <br>
+              <button type="submit">Add</button>
+            </form>
+            <ul id="todoList"></ul>
+          </div>
+          <div id="date"></div>
+          <div id="time"></div>
+        
+          <script>
+            // JavaScript to display real-time date and time
+            function displayDateTime() {
+              var dateElement = document.getElementById("date");
+              var timeElement = document.getElementById("time");
+        
+              var options = { year: 'numeric', month: 'long', day: 'numeric' };
+              var date = new Date().toLocaleDateString(undefined, options);
+              dateElement.innerHTML = date;
+        
+              var time = new Date().toLocaleTimeString();
+              timeElement.innerHTML = time;
+            }
+        
+            // Call the function to display the date and time every second
+            setInterval(displayDateTime, 1000);
+          </script>
+    
+
+</body>
+
+</html>

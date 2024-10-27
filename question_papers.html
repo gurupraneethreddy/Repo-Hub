@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Papers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: lavender;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #333;
+        color: #4dc02b;
+        padding: 50px;
+        text-align: center;
+        display: block;
+      }
+      h1 {
+        margin: 0;
+        font-size: 36px;
+      }
+      nav {
+        background-color: #4c4848;
+        color: #fff;
+        padding: 10px;
+        min-width: 600px;
+      }
+      
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      li {
+        float: left;
+      }
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-family: 'poppins', sans-serif;
+        font-size: 18px;
+        letter-spacing: 0.5px;
+      }
+      li a:hover {
+        background-color: #111;
+      }
+      a:hover:after {
+        width: 10%;
+      }
+      a:hover {
+        background-color: gray;
+        border-radius: 5px;
+      }
+      section {
+        padding: 20px;
+        margin: 20px;
+      }
+      
+    
+    .subject {
+      cursor: pointer;
+      font-weight: bold;
+      margin-bottom: 20px;
+      background-color:bisque;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s, transform 0.3s;
+      font-size: large;
+      text-align: center;
+    }
+    
+    .subject:hover {
+      background-color: #999;
+      transform: scale(1.01);
+    }
+    
+    .subject:active {
+      transform: scale(0.95);
+    }
+    
+    .subject::after {
+      content: '▼';
+      float: right;
+      font-size: 20px;
+      margin-top: 2px;
+      transition: transform 0.3s;
+    }
+    
+    .subject.open::after {
+      transform: rotate(180deg);
+    }
+    
+    .question-papers {
+      display: none;
+      margin-left: 40px;
+      border-left: 2px solid #999;
+      padding-left: 20px;
+    }
+    
+    .question-papers ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .question-papers li {
+      margin-bottom: 10px;
+    }
+    
+    .question-papers li::before {
+      content: '•';
+      color: #999;
+      display: inline-block;
+      width: 15px;
+      margin-right: 10px;
+    }
+    .question-papers li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .question-papers li a:hover {
+    color: #ffcc00;
+    text-decoration: underline;
+  }
+  #hi:hover {
+    background-color: gray;
+    border-radius: 5px;
+  }
+  .link:hover,
+      .active {
+        border-bottom: 2px solid #fff;
+        background-color: #111;
+        border-radius: 5px;
+      }
+      .logout {
+      position: relative;
+      padding-right: 30px;
+      float: right;
+    }
+
+    .logout .icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+    }
+    #date {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #fff;
+      font-size: 18px;
+    }
+
+    #time {
+      position: absolute;
+      top: 10px;
+      right: 140px;
+      color: #fff;
+      font-size: 18px;
+    }
+</style>
+
+<script>
+  function toggleQuestionPapers(subjectId) {
+    var questionPapers = document.getElementById(subjectId);
+    questionPapers.classList.toggle('open');
+    questionPapers.style.display = questionPapers.classList.contains('open') ? 'block' : 'none';
+  }
+</script>
+<body>
+    <header>
+        <img src="logo.png" width="100" height="100">
+        <h1>REPO HUB</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="home.html"> <i class="fas fa-home"></i>Home</a></li>
+            <li><a href="course.html"> <i class="fas fa-book"></i>Courses</a></li>
+            <li><a href="timetable.html"><i class="far fa-calendar-alt"></i> Class Timetable</a></li>
+            <li><a href="qp.html" class="link active"><i class="far fa-file-alt"></i>Question papers</a></li>
+            <li><a href="todo.html" ><i class="fas fa-tasks"></i>Works</a></li>
+
+            <li class="logout"><a href="login.html"><span class="icon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
+          
+        </ul>
+    </nav>
+    <br>
+    <div class="subject" onclick="toggleQuestionPapers('math')">Mathematics</div>
+    <div id="math" class="question-papers">
+      <ul>
+        <a href="LE2 qp-set 1.pdf" target="_blank" style="color: #111;"><li id="hi">Mathematics Question Paper 2022</li></a>
+        <a href="LE2 qp-set 1.pdf" target="_blank" style="color: #111;"><li  id="hi">Mathematics Question Paper 2021</li></a>&nbsp;
+         <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li  id="hi">Mathematics Question Paper 2020</li></a>&nbsp;
+         <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li  id="hi">Mathematics Question Paper 2020</li></a>&nbsp;
+         <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li  id="hi">Mathematics Question Paper 2020</li></a>&nbsp;
+         <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li  id="hi">Mathematics Question Paper 2020</li></a>&nbsp;
+         <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li  id="hi">Mathematics Question Paper 2020</li></a>&nbsp;
+        
+      </ul>
+    </div>
+    
+    <div class="subject" onclick="toggleQuestionPapers('science')">Science</div>
+    <div id="science" class="question-papers">
+      <ul>
+        <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li id="hi">science Question Paper 2022</li></a>
+        <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li  id="hi">science Question Paper 2021</li></a>
+         <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li  id="hi">science Question Paper 2020</li></a>
+        
+      </ul>
+    </div>
+    
+    <div class="subject" onclick="toggleQuestionPapers('UID')">UID</div>
+    <div id="UID" class="question-papers">
+      <ul>
+        <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li id="hi">UID Question Paper 2022</li></a>
+        <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li  id="hi">UID Question Paper 2021</li></a>
+         <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li  id="hi">UID Question Paper 2020</li></a>
+        
+      </ul>
+    </div>
+    <div class="subject" onclick="toggleQuestionPapers('Data Structures')">Data Structures</div>
+    <div id="Data Structures" class="question-papers">
+      <ul>
+        <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li id="hi">Data Structures Question Paper 2022</li></a>
+        <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li  id="hi">Data Structures Question Paper 2021</li></a>
+         <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li  id="hi">Data Structures Question Paper 2020</li></a>
+        
+      </ul>
+    </div>
+    <div class="subject" onclick="toggleQuestionPapers('EEE')">EEE</div>
+    <div id="EEE" class="question-papers">
+      <ul>
+        <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li id="hi">EEE Question Paper 2022</li></a>
+        <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li  id="hi">EEE Question Paper 2021</li></a>
+         <a href="Documents\L2.pdf" target="_blank" style="color: #111;"><li  id="hi">EEE Question Paper 2020</li></a>
+        
+      </ul>
+    </div>
+    <div id="date"></div>
+    <div id="time"></div>
+  
+    <script>
+      // JavaScript to display real-time date and time
+      function displayDateTime() {
+        var dateElement = document.getElementById("date");
+        var timeElement = document.getElementById("time");
+  
+        var options = { year: 'numeric', month: 'long', day: 'numeric' };
+        var date = new Date().toLocaleDateString(undefined, options);
+        dateElement.innerHTML = date;
+  
+        var time = new Date().toLocaleTimeString();
+        timeElement.innerHTML = time;
+      }
+  
+      // Call the function to display the date and time every second
+      setInterval(displayDateTime, 1000);
+    </script>
+    
+</body>
+</html>

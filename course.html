@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Courses</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		.subjects {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+		}
+		.subjects li {
+			margin: 10px 0;
+            display:flex;
+            justify-content: left;
+		}
+		.subjects a {
+			align-items: center;
+			display: block;
+			padding: 0;
+			background-color: #66e0e0;
+			color: #061b27;
+			text-decoration: none;
+			border-radius: 5px;
+			transition: background-color 0.3s, transform 0.3s;
+            width: 1400px;
+            height: 100px;
+            text-align: center;
+		}
+		.subjects a:hover {
+			background-color:goldenrod;
+			color: black;
+			transform: scale(1.1);
+		}
+        .subjects a {
+			align-items: center;
+            background-color: navajowhite;
+           
+        }
+	</style>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: lavender;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #333;
+        color: #4dc02b;
+        padding: 50px;
+        text-align: center;
+        display: block;
+      }
+      h1 {
+        margin: 0;
+        font-size: 36px;
+      }
+      nav {
+        background-color: #4c4848;
+        color: #fff;
+        padding: 10px;
+        min-width: 600px;
+      }
+      .link:hover,
+      .active {
+        border-bottom: 2px solid #fff;
+        background-color: #111;
+        border-radius: 5px;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      li {
+        float: left;
+      }
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-family: 'poppins', sans-serif;
+        font-size: 18px;
+        letter-spacing: 0.5px;
+      }
+      li a:hover {
+        background-color: #111;
+      }
+      a:hover:after {
+        width: 10%;
+      }
+      a:hover {
+        background-color: gray;
+        border-radius: 5px;
+      }
+      section {
+        padding: 20px;
+        margin: 20px;
+      }
+      #time {
+      position: absolute;
+      top: 10px;
+      right: 140px;
+      color: #fff;
+      font-size: 18px;
+    }
+    
+    #date {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #fff;
+      font-size: 18px;
+    }
+    .logout {
+      position: relative;
+      padding-right: 30px;
+      float: right;
+    }
+
+    .logout .icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" width="100" height="100">
+        <h1>REPO HUB</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="course.html"  class="link active"><i class="fas fa-book"></i> Courses</a></li>
+        <li><a href="timetable.html" ><i class="far fa-calendar-alt"></i> Class Timetable</a></li>
+        <li><a href="question_papers.html"><i class="far fa-file-alt"></i> Question Papers</a></li>
+        <li><a href="todo.html"><i class="fas fa-tasks"></i> Works</a></li>
+
+        <li class="logout"><a href="login.html"><span class="icon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
+      </ul>
+    </nav>
+    <br>
+    <h1><center>COURSES</center></h1>
+    <ul class="subjects">
+        <li><a href="19cse112n.html" target="_blank"><br><h1>MATHS</h1></a></li>
+        <li><a href="/phy.html" target="_blank"><br><h1>PHYSICS</h1></a></li>
+        <li><a href="/cp.html" target="_blank"><br><h1>C-PROGRAMMING</h1></a></li>
+        <li><a href="/maths.html" target="_blank"><br><h1>ENGLISH</h1></a></li>
+        <li><a href="/cp.html" target="_blank"><br><h1>UID</h1></a></li>
+        <li><a href="/phy.html" target="_blank"><br><h1>DATA STRUCTURES</h1></a></li>
+    </ul>
+    <div id="date"></div>
+    <div id="time"></div>
+  
+    <script>
+      // JavaScript to display real-time date and time
+      function displayDateTime() {
+        var dateElement = document.getElementById("date");
+        var timeElement = document.getElementById("time");
+  
+        var options = { year: 'numeric', month: 'long', day: 'numeric' };
+        var date = new Date().toLocaleDateString(undefined, options);
+        dateElement.innerHTML = date;
+  
+        var time = new Date().toLocaleTimeString();
+        timeElement.innerHTML = time;
+      }
+  
+      // Call the function to display the date and time every second
+      setInterval(displayDateTime, 1000);
+    </script>
+</body>
+</html>
